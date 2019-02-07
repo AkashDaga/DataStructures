@@ -1,4 +1,4 @@
 package linkedlist.utils;
 
-public class CircularSingleLinkedListUtils extends AbstractUtils {
+public class CircularSingleLinkedListUtils {
 }

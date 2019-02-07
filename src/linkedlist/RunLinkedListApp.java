@@ -6,5 +6,6 @@ public class RunLinkedListApp {
     public static void main(String args[]){
 
         LinkedListUtils linkedListUtils = LinkedListUtils.getInstance();
+        linkedListUtils.whichTypeOfLinkedList();
     }
 }
