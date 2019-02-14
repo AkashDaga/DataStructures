@@ -1,6 +1,6 @@
 package linkedlist.nodes;
 
-public class SinglyNode{
+public class SinglyNode extends Node{
 
     private int data;
     private SinglyNode nextNode;
@@ -22,7 +22,18 @@ public class SinglyNode{
         return nextNode;
     }
 
-    public void setNextNode(SinglyNode nextNode) {
-        this.nextNode = nextNode;
+    @Override
+    public void setNextNode(Node nextNode)  {
+        this.nextNode = (SinglyNode) nextNode;
+    }
+
+    @Override
+    public Node getPreviousNode() {
+        return null;
+    }
+
+    @Override
+    public void setPreviousNode(Node prevNode) {
+
     }
 }

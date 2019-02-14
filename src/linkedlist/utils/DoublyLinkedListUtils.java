@@ -1,8 +1,9 @@
 package linkedlist.utils;
 
 import linkedlist.nodes.DoublyNode;
+import linkedlist.nodes.Node;
 
-public class DoublyLinkedListUtils {
+public class DoublyLinkedListUtils extends BaseUtils{
     private static DoublyLinkedListUtils doublyLinkedListUtils;
     private DoublyNode head;
     private DoublyNode end;
@@ -153,5 +154,33 @@ public class DoublyLinkedListUtils {
 
     public DoublyNode getEnd() {
         return end;
+    }
+
+    @Override
+    public DoublyNode reverseLinkedList(Node node) {
+        DoublyNode currentNode = (DoublyNode) node;
+        DoublyNode prevNode = null;
+        DoublyNode nextNode = null;
+
+        while(currentNode != null){
+            nextNode = currentNode.getNextNode();
+            prevNode = currentNode.getPreviousNode();
+
+            currentNode.setPreviousNode(nextNode);
+            currentNode.setNextNode(prevNode);
+
+            if(nextNode == null){
+                head = currentNode;
+            }
+            if(prevNode == null){
+                end = currentNode;
+            }
+
+            currentNode = nextNode;
+        }
+
+        print(getHead());
+        return head;
+
     }
 }

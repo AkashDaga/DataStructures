@@ -1,5 +1,7 @@
 package linkedlist.utils;
 
+import linkedlist.nodes.Node;
+
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -24,7 +26,7 @@ public class LinkedListUtils {
         scanner = new Scanner(System.in);
     }
 
-    public void whichTypeOfLinkedList() {
+    public BaseUtils whichTypeOfLinkedList() {
         System.out.println("Which type of linkedlist you want to create");
 
         System.out.println("press 1 for single linked list");
@@ -103,7 +105,8 @@ public class LinkedListUtils {
                     String operateAgain = scanner.next();
                     loopIt = operateAgain.toLowerCase().charAt(0) == 'y';
                 } while (loopIt);
-                break;
+
+                return singleLinkedListUtils;
             }
             case 2: {
                 doublyLinkedListUtils = DoublyLinkedListUtils.getInstance();
@@ -180,10 +183,11 @@ public class LinkedListUtils {
                     String operateAgain = scanner.next();
                     loopIt = operateAgain.toLowerCase().charAt(0) == 'y';
                 } while (loopIt);
-                break;
+
+                return doublyLinkedListUtils;
             }
             case 3: {
-                doublyLinkedListUtils = DoublyLinkedListUtils.getInstance();
+                circularSingleLinkedListUtils = CircularSingleLinkedListUtils.getInstance();
                 boolean loopIt = true;
                 do {
                     System.out.println("press 1 for insertion at first");
@@ -194,20 +198,21 @@ public class LinkedListUtils {
                     System.out.println("press 6 for delete the node at any position");
                     System.out.println("press 7 for the size of the array");
                     System.out.println("press 8 print the list");
+                    System.out.println("press 9 for testing Circular single Linked List");
 
                     int options = scanner.nextInt();
 
                     switch (options) {
                         case 1: {
                             System.out.println("Enter the value ");
-                            doublyLinkedListUtils.addAtFirst(scanner.nextInt());
-                            doublyLinkedListUtils.print(doublyLinkedListUtils.getHead());
+                            circularSingleLinkedListUtils.addAtFirst(scanner.nextInt());
+                            circularSingleLinkedListUtils.print(circularSingleLinkedListUtils.getHead());
                             break;
                         }
                         case 2: {
                             System.out.println("Enter the value ");
-                            doublyLinkedListUtils.addAtLast(scanner.nextInt());
-                            doublyLinkedListUtils.print(doublyLinkedListUtils.getHead());
+                            circularSingleLinkedListUtils.addAtLast(scanner.nextInt());
+                            circularSingleLinkedListUtils.print(circularSingleLinkedListUtils.getHead());
                             break;
                         }
                         case 3: {
@@ -216,33 +221,37 @@ public class LinkedListUtils {
                             System.out.println("Enter the position ");
                             int position = scanner.nextInt();
 
-                            doublyLinkedListUtils.addAtAnyPosition(key, position);
-                            doublyLinkedListUtils.print(doublyLinkedListUtils.getHead());
+                            circularSingleLinkedListUtils.addAtAnyPosition(key, position);
+                            circularSingleLinkedListUtils.print(circularSingleLinkedListUtils.getHead());
                             break;
                         }
                         case 4: {
-                            doublyLinkedListUtils.deleteAtFirst();
-                            doublyLinkedListUtils.print(doublyLinkedListUtils.getHead());
+                            circularSingleLinkedListUtils.deleteAtFirst();
+                            circularSingleLinkedListUtils.print(circularSingleLinkedListUtils.getHead());
                             break;
                         }
                         case 5: {
-                            doublyLinkedListUtils.deleteAtLast();
-                            doublyLinkedListUtils.print(doublyLinkedListUtils.getHead());
+                            circularSingleLinkedListUtils.deleteAtLast();
+                            circularSingleLinkedListUtils.print(circularSingleLinkedListUtils.getHead());
                             break;
                         }
                         case 6: {
                             System.out.println("Enter the position ");
-                            doublyLinkedListUtils.deleteAtAnyPosition(scanner.nextInt());
-                            doublyLinkedListUtils.print(doublyLinkedListUtils.getHead());
+                            circularSingleLinkedListUtils.deleteAtAnyPosition(scanner.nextInt());
+                            circularSingleLinkedListUtils.print(circularSingleLinkedListUtils.getHead());
 
                             break;
                         }
                         case 7: {
-                            System.out.println("size of the linked list -> " + doublyLinkedListUtils.getCount());
+                            System.out.println("size of the linked list -> " + circularSingleLinkedListUtils.getCount());
                             break;
                         }
                         case 8: {
-                            doublyLinkedListUtils.print(doublyLinkedListUtils.getHead());
+                            circularSingleLinkedListUtils.print(circularSingleLinkedListUtils.getHead());
+                            break;
+                        }
+                        case 9: {
+                            circularSingleLinkedListUtils.test();
                             break;
                         }
                     }
@@ -251,10 +260,10 @@ public class LinkedListUtils {
                     String operateAgain = scanner.next();
                     loopIt = operateAgain.toLowerCase().charAt(0) == 'y';
                 } while (loopIt);
-                break;
+                return circularSingleLinkedListUtils;
             }
             case 4: {
-                singleLinkedListUtils = SingleLinkedListUtils.getInstance();
+                circularDoublyLinkedListUtils = CircularDoublyLinkedListUtils.getInstance();
                 boolean loopIt = true;
                 do {
                     System.out.println("press 1 for insertion at first");
@@ -264,35 +273,97 @@ public class LinkedListUtils {
                     System.out.println("press 5 for delete the node at last position");
                     System.out.println("press 6 for delete the node at any position");
                     System.out.println("press 7 for the size of the array");
-                    System.out.println("press 8 print the array");
+                    System.out.println("press 8 print the list");
+                    System.out.println("press 9 for testing Circular doubly Linked List");
 
                     int options = scanner.nextInt();
 
                     switch (options) {
                         case 1: {
+                            System.out.println("Enter the value ");
+                            circularDoublyLinkedListUtils.addAtFirst(scanner.nextInt());
+                            circularDoublyLinkedListUtils.print(circularDoublyLinkedListUtils.getHead());
                             break;
                         }
                         case 2: {
-
+                            System.out.println("Enter the value ");
+                            circularDoublyLinkedListUtils.addAtLast(scanner.nextInt());
+                            circularDoublyLinkedListUtils.print(circularDoublyLinkedListUtils.getHead());
                             break;
                         }
                         case 3: {
+                            System.out.println("Enter the value ");
+                            int key = scanner.nextInt();
+                            System.out.println("Enter the position ");
+                            int position = scanner.nextInt();
 
+                            circularDoublyLinkedListUtils.addAtAnyPosition(key, position);
+                            circularDoublyLinkedListUtils.print(circularDoublyLinkedListUtils.getHead());
                             break;
                         }
                         case 4: {
+                            circularDoublyLinkedListUtils.deleteAtFirst();
+                            circularDoublyLinkedListUtils.print(circularDoublyLinkedListUtils.getHead());
+                            break;
+                        }
+                        case 5: {
+                            circularDoublyLinkedListUtils.deleteAtLast();
+                            circularDoublyLinkedListUtils.print(circularDoublyLinkedListUtils.getHead());
+                            break;
+                        }
+                        case 6: {
+                            System.out.println("Enter the position ");
+                            circularDoublyLinkedListUtils.deleteAtAnyPosition(scanner.nextInt());
+                            circularDoublyLinkedListUtils.print(circularDoublyLinkedListUtils.getHead());
 
+                            break;
+                        }
+                        case 7: {
+                            System.out.println("size of the linked list -> " + circularDoublyLinkedListUtils.getCount());
+                            break;
+                        }
+                        case 8: {
+                            circularDoublyLinkedListUtils.print(circularDoublyLinkedListUtils.getHead());
+                            break;
+                        }
+                        case 9: {
+                            circularDoublyLinkedListUtils.test();
                             break;
                         }
                     }
 
                     System.out.println("Do you want to continue yes/no?");
-                    String operateAgain = scanner.nextLine();
+                    String operateAgain = scanner.next();
                     loopIt = operateAgain.toLowerCase().charAt(0) == 'y';
-                }
-                while (loopIt);
-                break;
+                } while (loopIt);
+
+                return circularDoublyLinkedListUtils;
             }
+
+            default: return null;
         }
+    }
+
+    public Node reverseLinkedList(){
+        BaseUtils baseUtils = whichTypeOfLinkedList();
+
+        if(baseUtils == null){
+            System.out.print("Base Utils cant be null");
+            return null;
+        }
+
+        if(baseUtils instanceof SingleLinkedListUtils){
+            return singleLinkedListUtils.reverseLinkedList(singleLinkedListUtils.getHead());
+        } else if(baseUtils instanceof DoublyLinkedListUtils){
+            return doublyLinkedListUtils.reverseLinkedList(doublyLinkedListUtils.getHead());
+        } else if (baseUtils instanceof CircularSingleLinkedListUtils){
+            return circularSingleLinkedListUtils.reverseLinkedList(circularSingleLinkedListUtils.getHead());
+        } else if(baseUtils instanceof CircularDoublyLinkedListUtils){
+            return circularDoublyLinkedListUtils.reverseLinkedList(circularDoublyLinkedListUtils.getHead());
+        } else {
+            System.out.println("oops... something went wrong ");
+            return null;
+        }
+
     }
 }

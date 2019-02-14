@@ -1,6 +1,6 @@
 package linkedlist.nodes;
 
-public class DoublyNode {
+public class DoublyNode extends Node{
     private DoublyNode previousNode;
     private int data;
     private DoublyNode nextNode;
@@ -15,12 +15,18 @@ public class DoublyNode {
         return previousNode;
     }
 
-    public void setPreviousNode(DoublyNode previousNode) {
-        this.previousNode = previousNode;
-    }
-
     public int getData() {
         return data;
+    }
+
+    @Override
+    public void setNextNode(Node nextNode) {
+        this.nextNode = (DoublyNode) nextNode;
+    }
+
+    @Override
+    public void setPreviousNode(Node prevNode) {
+            this.previousNode = (DoublyNode) prevNode;
     }
 
     public void setData(int data) {
@@ -29,9 +35,5 @@ public class DoublyNode {
 
     public DoublyNode getNextNode() {
         return nextNode;
-    }
-
-    public void setNextNode(DoublyNode nextNode) {
-        this.nextNode = nextNode;
     }
 }

@@ -1,8 +1,9 @@
 package linkedlist.utils;
 
+import linkedlist.nodes.Node;
 import linkedlist.nodes.SinglyNode;
 
-public class SingleLinkedListUtils {
+public class SingleLinkedListUtils extends BaseUtils{
 
     private static SingleLinkedListUtils singleLinkedListUtils;
     private SinglyNode head;
@@ -133,5 +134,29 @@ public class SingleLinkedListUtils {
 
     public SinglyNode getEnd() {
         return end;
+    }
+
+    @Override
+    public SinglyNode reverseLinkedList(Node node) {
+        SinglyNode prevNode = null;
+        SinglyNode currentNode =(SinglyNode) node;
+        SinglyNode nextNode = null;
+
+        while(currentNode != null){
+            nextNode = currentNode.getNextNode();
+            currentNode.setNextNode(prevNode);
+            if(prevNode == null){
+                end = (SinglyNode) currentNode;
+            }
+            if(nextNode == null){
+                head = (SinglyNode) currentNode;
+            }
+            prevNode = currentNode;
+            currentNode = nextNode;
+        }
+
+        print(getHead());
+
+        return head;
     }
 }
