@@ -1,4 +1,4 @@
-package BinaryTree;
+package Trees.BinaryTree;
 
 public class Node {
     private Node leftChild;

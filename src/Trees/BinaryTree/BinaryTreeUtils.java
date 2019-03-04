@@ -1,6 +1,4 @@
-package BinaryTree;
-
-import StackAndQueues.utils.StackUtils;
+package Trees.BinaryTree;
 
 import java.util.*;
 
@@ -265,6 +263,35 @@ public class BinaryTreeUtils {
 
     }
 
+    public int findNumberOfNodes(Node node){
+        if(node == null)
+            return 0;
+        int leftSubTreeNodeCount = findNumberOfNodes(node.getleftChild());
+        int rightSubTreeNodeCount = findNumberOfNodes(node.getrightChild());
+
+        return 1+leftSubTreeNodeCount+rightSubTreeNodeCount;
+    }
+
+    public int findNumberOfLeafNodes(Node node){
+        if(node == null)
+            return 0;
+
+        if(node.getleftChild() == null && node.getrightChild() == null)
+            return 1;
+
+        return findNumberOfLeafNodes(node.getleftChild()) + findNumberOfLeafNodes(node.getrightChild());
+    }
+
+    public int findNumberOfNonLeafNodes(Node node){
+        if(node == null)
+            return 0;
+
+        if(node.getleftChild() == null && node.getrightChild() == null)
+            return 0;
+
+        return 1+findNumberOfNonLeafNodes(node.getleftChild()) + findNumberOfNonLeafNodes(node.getrightChild());
+    }
+
     public void printTraversals(){
         System.out.println("Pre Order Traversal ");
         preorderTraversal(head);
@@ -289,6 +316,12 @@ public class BinaryTreeUtils {
 
         System.out.println("\nprint top view of the tree");
         printTopViewOfTree(head);
+
+        System.out.println("\ntotal number of nodes in the tree : "+findNumberOfNodes(head));
+
+        System.out.println("\nnumber of leaf nodes in the tree : "+findNumberOfLeafNodes(head));
+
+        System.out.println("\nnumber of non leaf nodes in the tree : "+findNumberOfNonLeafNodes(head));
 
         System.out.println("\nHeight of the tree "+getHeightOfTheTree(head));
     }

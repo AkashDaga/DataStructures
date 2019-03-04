@@ -1,4 +1,4 @@
-package BinaryTree;
+package Trees.BinaryTree;
 
 public class RunBinaryTreeApp {
     public static void main(String args[]){
