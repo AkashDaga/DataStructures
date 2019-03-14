@@ -292,6 +292,22 @@ public class BinaryTreeUtils {
         return 1+findNumberOfNonLeafNodes(node.getleftChild()) + findNumberOfNonLeafNodes(node.getrightChild());
     }
 
+    public Node lowestCommonAncestar(Node root, int firstNdoeData, int secondNodeData){
+        if(root == null)
+            return null;
+
+        if(root.getData() == firstNdoeData || root.getData() == secondNodeData)
+            return root;
+
+        Node left = lowestCommonAncestar(root.getleftChild(), firstNdoeData, secondNodeData);
+        Node right = lowestCommonAncestar(root.getrightChild(), firstNdoeData, secondNodeData);
+
+        if(left != null && right != null)
+            return root;
+        else
+            return left != null ? left : right;
+    }
+
     public void printTraversals(){
         System.out.println("Pre Order Traversal ");
         preorderTraversal(head);
@@ -322,6 +338,8 @@ public class BinaryTreeUtils {
         System.out.println("\nnumber of leaf nodes in the tree : "+findNumberOfLeafNodes(head));
 
         System.out.println("\nnumber of non leaf nodes in the tree : "+findNumberOfNonLeafNodes(head));
+
+        System.out.println("\nlowest common ancestar of Binary Tree : " + lowestCommonAncestar(head, 4,5));
 
         System.out.println("\nHeight of the tree "+getHeightOfTheTree(head));
     }
