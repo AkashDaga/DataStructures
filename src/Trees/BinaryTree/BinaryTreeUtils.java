@@ -4,7 +4,9 @@ import java.util.*;
 
 public class BinaryTreeUtils {
     private static BinaryTreeUtils binaryTreeUtils;
+    int sum = 0;
     private Node head;
+    private Stack<Node> pathStack = new Stack<>();
     private Queue<Node> insertionQueue = new LinkedList<>();
     private Queue<Node> orderMaintainQueue = new LinkedList<>();
     private LinkedHashMap<Integer,List<Integer>> verticalOrderMap = new LinkedHashMap<>();
@@ -308,7 +310,13 @@ public class BinaryTreeUtils {
             return left != null ? left : right;
     }
 
+
     public void printTraversals(){
+
+        new MaximumPathSum().execute();
+
+
+
         System.out.println("Pre Order Traversal ");
         preorderTraversal(head);
 
