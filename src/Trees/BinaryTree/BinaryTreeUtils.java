@@ -200,7 +200,7 @@ public class BinaryTreeUtils {
 
     public void verticalOrderTraversal(Node node, int level){
         LinkedHashMap<Integer,List<Integer>> verticalOrderHashMap = getVerticalOrderTraversalMap(node,level);
-        for(Map.Entry<Integer,List<Integer>> entryMap : verticalOrderMap.entrySet()){
+        for(Map.Entry<Integer,List<Integer>> entryMap : verticalOrderHashMap.entrySet()){
             for(Integer value : entryMap.getValue()){
                 System.out.print(value+" ");
             }
